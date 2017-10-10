@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Auckland Council Takapuna Map</title>
+</head>
+<link rel="stylesheet" href="dist/css/animate.css">
+<link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css"
+   integrity="sha512-M2wvCLH6DSRazYeZRIm1JnYyh22purTM+FDB5CsyxtQJYeKq83arPe5wgbNmcFXGqiSH2XR8dT/fJISVA1r/zQ=="
+   crossorigin=""/>
+<link rel="stylesheet" href="dist/css/bootstrap.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/css?family=Mukta|Open+Sans|Quicksand" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+
+<body>
+    <div id="map"></div>
+    <!-- Top Segment -->
+    <div class="row">
+    
+        <div class="col-sm-1 border top"><i class="fa fa-bars hamburger" aria-hidden="true"></i>
+        </div>
+        
+        <!-- Social Media Icons -->
+        <div class="col-sm-11 border top icons">
+        <select class="custom-select">
+            <option selected>Select Suburb</option>
+            <option value="1">Takapuna</option>
+            <option value="2">Ponsonby</option>
+            <option value="3">Parnell</option>
+            <option value="4">Mission Bay</option>
+            <option value="5">Newmarket</option>
+            <option value="6">Browns Bay</option>
+            <option value="7">Albany</option>
+            <option value="8">Botany Downs</option>
+            <option value="9">Herne Bay</option>
+            <option value="10">Waiheke Island</option>
+            <option value="11">Devonport</option>
+            <option value="12">Titirangi</option>
+            <option value="10">Epsom</option>
+
+        </select>
+            <a href="https://twitter.com/AklCouncil" target="blank"><i class="fa fa-twitter social-media" aria-hidden="true"></i></a>
+            <a href="https://www.facebook.com/aklcouncil/" target="blank"><i class="fa fa-facebook social-media" aria-hidden="true"></i></a>
+        </div>
+    </div>
+    <!-- List Item 1 -->
+    <div id="dropdown" >
+        <div class="row">
+            <div class="col-sm-3 list-item">
+                <div class="button flex" data-keyword='Hotel'><i class="fa fa-home list-icon" aria-hidden="true"></i>
+                    <h4>Hotels</h4></div>
+            </div>
+        </div>
+        <!-- List Item 2 -->
+        <div class="row">
+            <div class="col-sm-3 list-item">
+                <div class="button flex" data-keyword='cafes'><i class="fa fa-coffee list-icon" aria-hidden="true"></i>
+                    <h4>Cafes</h4></div>
+            </div>
+        </div>
+        <!-- List Item 3 -->
+        <div class="row">
+            <div class="col-sm-3 list-item">
+                <div class="button flex" data-keyword='restaurant'><i class="fa fa-cutlery list-icon" aria-hidden="true"></i>
+                    <h4>Restaurants</h4></div>
+            </div>
+        </div>
+        <!-- List Item 4 -->
+        <div class="row">
+            <div class="col-sm-3 list-item">
+                <div class="button flex" data-keyword='bar'><i class="fa fa-glass list-icon" aria-hidden="true"></i>
+                    <h4>Bars & Nightlife</h4></div>
+            </div>
+        </div>
+        <!-- List Item 5 -->
+        <div class="row">
+            <div class="col-sm-3 list-item">
+                <div class="button flex" data-keyword='shop'><i class="fa fa-shopping-bag list-icon" aria-hidden="true"></i>
+                    <h4>Shopping</h4></div>
+            </div>
+        </div>
+        <!-- List Item 6 -->
+        <div class="row">
+            <div class="col-sm-3 list-item">
+                <div class="button flex" data-keyword='transport'><i class="fa fa-bus list-icon" aria-hidden="true"></i>
+                    <h4>Bus Stations</h4></div>
+            </div>
+        </div>
+         <!-- List Item 7 -->
+        <div class="row">
+            <div class="col-sm-3 list-item">
+                <div class="button flex" data-keyword='medical'><i class="fa fa-heartbeat list-icon" aria-hidden="true"></i>
+                    <h4>Health</h4></div>
+            </div>
+        </div>
+        <!-- List Item 8 -->
+        <div class="row">
+            <div class="col-sm-3 list-item">
+                <div class="button flex" data-keyword='school'><i class="fa fa-graduation-cap list-icon" aria-hidden="true"></i>
+                    <h4>Schools</h4></div>
+            </div>
+        </div>
+        <!-- List Item 9 -->
+        <div class="row">
+            <div class="col-sm-3 list-item">
+                <div class="button flex" data-keyword='park'><i class="fa fa-tree list-icon" aria-hidden="true"></i>
+                    <h4>Parks</h4></div>
+            </div>
+        </div>
+        
+    </div>
+    <!-- Navigation Icons -->
+    <div id="navigation">
+        <div class="row navigation">
+            <div class="col-sm-12 icon-right"> <i class="fa fa-search-plus locations" id="in" aria-hidden="true"></i>
+            </div>
+        </div>
+        <div class="row navigation">
+            <div class="col-sm-12 icon-right"> <i class="fa fa-search-minus locations" id="out" aria-hidden="true"></i>
+            </div>
+        </div>
+        <div class="row navigation">
+            <div class="col-sm-12 icon-right"> <i class="fa fa-compass locations" id="center" aria-hidden="true"></i>
+            </div>
+        </div>
+    </div>
+    <!-- Auckland Council Logo -->
+    <a href="https://www.aucklandcouncil.govt.nz" target="blank"><img class="logo" src="img/logo.png" alt="Auckland Council"></a>
+    <!-- Footer -->
+    <div class="row">
+        <div class="col-sm-12 border footer"></div>
+    </div>
+
+    <!-- Modal popup -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script id="venue-template" type="text/template7">
+            <div class="photos">
+
+                {{#if photos.groups["0"]}}
+                    {{#each photos.groups["0"].items}}
+                    <img src="{{prefix}}100x100{{suffix}}" alt="">
+                {{/each}}  
+
+                {{/if}}
+
+            </div>
+
+            <div class="opening-hours">
+    
+                {{#if hours}}
+                    {{#each hours.timeframes}}
+                    <div>{{days}} - {{open["0"].renderedTime}}</div>
+                    {{/each}} 
+
+                {{/if}}
+                      
+            </div>
+            <div class="contact">
+
+                {{#if location.address}}
+                    <div>{{location.address}}</div>
+
+                {{/if}}
+
+                {{#if contact.formattedPhone}}
+                    <div>{{contact.formattedPhone}}</div>
+
+                {{/if}}
+                
+               
+            </div>
+    </script>
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="dist/js/tether.js"></script>
+    <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+    <script src="dist/js/bootstrap.js"></script>
+    <script src="template7/template7.js"></script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
