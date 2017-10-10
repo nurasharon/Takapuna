@@ -9,7 +9,7 @@ let suburb = 'Takapuna';
 var venueHtml = $('#venue-template').html();
 var venueTemplate = Template7.compile(venueHtml);
  
-
+//Main function starts here
 
 $(function() {
 
